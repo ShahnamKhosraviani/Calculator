@@ -1,0 +1,113 @@
+from tkinter import *
+from tkinter import StringVar
+from tkinter import Button
+
+
+
+
+window = Tk()
+window.geometry ("300x375")
+window.title ("Calculator")
+window.config(bg="black")
+
+#ACTIONS:
+def clear():
+    #Action: Clears the entry().
+    Numbox.delete(0,END);
+    return;
+
+def update_Entry(inputValue):
+    #Updates the entry when a button is pressed.
+    currentText = equation.get();
+    update = equation.set(currentText + inputValue);
+
+def evaluate():
+    currentText = equation.get()
+    try:
+        equation.set(str(eval(currentText)))
+    except SyntaxError:
+        equation.set('<ERROR>')
+
+equation = StringVar()
+Numbox = Entry(window, textvariable = equation,fg="white",bg="black",bd = 15)
+Numbox.place(x=0,y=0,width=300,height=75)
+Numbox.config(relief=RIDGE)
+
+version = Label(window,text="Version 1.0.1")
+version.place(x=5,y=335)
+version.config(bg="black",font=("Arial", 10))
+
+copyright = Label(window,text="©SK 2023")
+copyright.place(x=5,y=353)
+copyright.config(bg="black", font=("Arial", 8))
+
+
+
+
+button7= Button(window, text= "7", bd = 5,command= lambda: update_Entry("7"))
+button7.place( x=0,y=125,width=75,height=55)
+button7.configure(background="blue")
+
+
+#
+button8= Button(window, text= "8",bg= "#75b5e6",bd = 5,command= lambda: update_Entry("8"))
+button8.place( x=75,y=125,width=75,height=55)
+#
+#
+button9= Button(window, text= "9", fg="black",bg= "#75b5e6",bd = 5,command= lambda: update_Entry("9"))
+button9.place( x=150,y=125,width=75,height=55)
+#
+#
+buttonplus= Button(window, text= "+", fg="black", bg= "#75b5e6",bd = 5,command= lambda: update_Entry("+"))
+buttonplus.place( x=150,y=75,width=75,height=55)
+#
+button4= Button(window, text= "4", fg="black", bg= "#75b5e6",bd = 5,command= lambda: update_Entry("4"))
+button4.place( x=0,y=175,width=75,height=55)
+button4.config(fg="black", bg="#75b5e6")
+#
+button5= Button(window, text= "5", fg="black", bg= "#75b5e6",bd = 5,command= lambda: update_Entry("5"))
+button5.place( x=75,y=175,width=75,height=55)
+button5.config(fg="black", bg="#75b5e6")
+#
+button6= Button(window, text= "6", fg="black", bg= "#75b5e6",bd = 5,command= lambda: update_Entry("6"))
+button6.place( x=150,y=175,width=75,height=55)
+button6.config(fg="black", bg="#75b5e6")
+#
+buttonminus= Button(window, text= "-", fg="black", bg="white",bd = 5,command= lambda: update_Entry("-"))
+buttonminus.place( x=225,y=75,width=75,height=55)
+#
+button1= Button(window, text= "1", fg="black", bg= "#75b5e6",bd = 5,command= lambda: update_Entry("1"))
+button1.place( x=0,y=225,width=75,height=55)
+button1.config(fg="black", bg="#75b5e6")
+#
+button2= Button(window, text= "2", fg="black",bg= "#75b5e6",bd = 5,command= lambda: update_Entry("2"))
+button2.place( x=75,y=225,width=75,height=55)
+button2.config(fg="black", bg="#75b5e6")
+#
+button3= Button(window, text= "3", fg="black", background= "#75b5e6",bd = 5,command= lambda: update_Entry("3"))
+button3.place( x=150,y=225,width=75,height=55)
+button3.config(fg="black", bg="#75b5e6")
+#
+buttonmultiply= Button(window, text= "X", fg="black", bg="white",bd = 5,command= lambda: update_Entry("*"))
+buttonmultiply.place( x=225,y=125,width=75,height=55)
+
+buttonclear= Button(window, text= "c", fg="black", bg="white",bd = 5,command= clear)
+buttonclear.place(x=0,y=75,width=150,height=55)
+#
+button0= Button(window, text= "0", fg="black", bg="white",bd = 6,command= lambda: update_Entry("0"))
+button0.place( x=0,y=275,width=150,height=55)
+#
+buttonequals= Button(window, text= "=", fg="black", bg="white",bd = 5,command= lambda: evaluate())
+buttonequals.place( x=225,y=225,width=75,height=105)
+#
+buttondivide= Button(window, text= "/", fg="black", bg="white",bd = 5,command= lambda: update_Entry("/"))
+buttondivide.place( x=225,y=175,width=75,height=55)
+#
+buttonperiod= Button(window, text= ".", fg="black", bg="white",bd = 5,command= lambda: update_Entry("."))
+buttonperiod.place( x=150,y=275,width=75,height=55)
+
+
+
+
+
+window.mainloop()
